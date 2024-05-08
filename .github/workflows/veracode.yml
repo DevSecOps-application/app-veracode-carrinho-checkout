@@ -6,15 +6,16 @@
 # This workflow will initiate a Veracode Static Analysis Pipeline scan, return a results.json and convert to SARIF for upload as a code scanning alert
 
 name: Veracode Static Analysis Pipeline Scan
+analysis_on_platform: true
 
 on:
   push:
     branches: [ "main" ]
-    analysis_on_platform: true
+    
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ "main" ]
-    analysis_on_platform: true
+    
   schedule:
     - cron: '42 10 * * 0'
   
