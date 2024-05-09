@@ -2,6 +2,7 @@ name: Veracode SAST and SCA Scan
 
 on:
   push:
+    
     branches: [ "main" ]
     
   pull_request:
