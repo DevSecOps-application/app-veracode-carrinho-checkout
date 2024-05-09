@@ -1,6 +1,12 @@
 name: Veracode SAST and SCA Scan
 
 on:
+  push:
+    branches: [ "main" ]
+    
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ "main" ]
   schedule:
     - cron: '0 0 * * *' # Runs every day at midnight UTC
   workflow_dispatch:
