@@ -29,7 +29,7 @@ jobs:
           path: veracode.zip
 
   veracode_policy_scan:
-    needs: build
+    needs: veracode-sca-scan
     runs-on: ubuntu-latest
     name: Veracode Static Code Analysis
     steps:
@@ -57,6 +57,7 @@ jobs:
           scantimeout: 15
 
   veracode-sca-scan:
+    needs: build
     runs-on: ubuntu-latest
     name: Veracode Component Analysis
 
@@ -67,7 +68,7 @@ jobs:
       - name: Run Veracode SCA
         env:
           SRCCLR_API_TOKEN: ${{ secrets.SRCCLR_API_TOKEN }}
-          SRCCLR_WORKSPACE_SLUG: 'Fellip'
+         
         uses: veracode/veracode-sca@v2.1.10
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
