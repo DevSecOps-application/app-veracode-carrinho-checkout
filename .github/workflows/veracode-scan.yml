@@ -2,7 +2,7 @@ name: Veracode SAST and SCA Scan
 
 on:
   push:
-    
+
     branches: [ "main" ]
     
   pull_request:
@@ -67,6 +67,7 @@ jobs:
       - name: Run Veracode SCA
         env:
           SRCCLR_API_TOKEN: ${{ secrets.SRCCLR_API_TOKEN }}
+          SRCCLR_WORKSPACE_SLUG: 'Fellip'
         uses: veracode/veracode-sca@v2.1.6
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
