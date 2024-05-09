@@ -27,7 +27,7 @@ permissions:
 
 jobs:
   # This workflow contains a job to build and submit pipeline scan, you will need to customize the build process accordingly and make sure the artifact you build is used as the file input to the pipeline scan file parameter
-  analysis_on_platform: true
+  
   build-and-pipeline-scan:
     # The type of runner that the job will run on
     permissions:
@@ -35,6 +35,7 @@ jobs:
       security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
       actions: read # only required for a private repository by github/codeql-action/upload-sarif to get the Action run status
     runs-on: ubuntu-latest
+    
     steps:
 
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it and copies all sources into ZIP file for submitting for analysis. Replace this section with your applications build steps
@@ -47,7 +48,7 @@ jobs:
     # download the Veracode Static Analysis Pipeline scan jar
     - run: curl --silent --show-error --fail -O https://downloads.veracode.com/securityscan/pipeline-scan-LATEST.zip
     - run: unzip -o pipeline-scan-LATEST.zip
-
+        
     - uses: actions/setup-java@v3
       with:
         java-version: 8
