@@ -33,7 +33,7 @@ jobs:
     needs: Package
     steps:
       - name: Download Artefato
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: pacoteVeracode
       - name: UploadAndScan
@@ -56,6 +56,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: Package
     steps:
+      - name: Download Artefato
+        uses: actions/download-artifact@v4
+        with:
+          name: pacoteVeracode
       - name: Veracode Pipeline Scan
         env:
           VID: ${{ secrets.VERACODE_API_ID }} # Lembrar de criar as credenciais no Secrets
